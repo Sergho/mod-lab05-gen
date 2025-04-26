@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 
 namespace generator
 {
@@ -7,8 +6,8 @@ namespace generator
     {
         static void Main(string[] args)
         {
-            var generator = new SteadyCharGenerator();
-            Example example = generator.getExample(1000);
+            var generator = new BigramCharGenerator();
+            Example example = generator.getExample(10000);
             Console.WriteLine(example.String);
             foreach (var entry in example.Stats)
             {
