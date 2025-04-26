@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.IO;
 
 namespace generator
 {
@@ -6,7 +8,7 @@ namespace generator
     {
         static void Main(string[] args)
         {
-            var generator = new SteadyGenerator();
+            var generator = new WordGenerator();
             Example example = generator.getExample(1000);
             Console.WriteLine(example.String);
             foreach (var entry in example.Stats)
