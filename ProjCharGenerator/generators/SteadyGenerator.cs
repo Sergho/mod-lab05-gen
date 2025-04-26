@@ -31,6 +31,6 @@ public class SteadyGenerator : Generator
 				stats.Add($"{result[i]}", 1);
 		}
 
-		return new Example { String = result, Stats = stats };
+		return new Example { String = result, Stats = stats, Length = length };
 	}
 }

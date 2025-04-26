@@ -51,6 +51,6 @@ public class WordGenerator : Generator
 				stats.Add(word, 1);
 		}
 
-		return new Example { String = result, Stats = stats };
+		return new Example { String = result, Stats = stats, Length = length };
 	}
 }

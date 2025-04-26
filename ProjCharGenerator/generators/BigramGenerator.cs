@@ -83,6 +83,6 @@ public class BigramGenerator : Generator
 				stats.Add(bigram, 1);
 		}
 
-		return new Example { String = result, Stats = stats };
+		return new Example { String = result, Stats = stats, Length = length };
 	}
 }
