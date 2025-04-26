@@ -6,8 +6,8 @@ namespace generator
     {
         static void Main(string[] args)
         {
-            var generator = new BigramGenerator();
-            Example example = generator.getExample(10000);
+            var generator = new SteadyGenerator();
+            Example example = generator.getExample(1000);
             Console.WriteLine(example.String);
             foreach (var entry in example.Stats)
             {

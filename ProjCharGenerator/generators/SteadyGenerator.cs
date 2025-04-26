@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace generator;
 
@@ -16,9 +15,9 @@ public class SteadyGenerator : Generator
 		data = syms.ToCharArray();
 	}
 
-	public override char getNextChar(char? prev)
+	public override string getNextPart(string prev)
 	{
-		return data[random.Next(0, size)];
+		return $"{data[random.Next(0, size)]}";
 	}
 	public override Example getExample(int length)
 	{

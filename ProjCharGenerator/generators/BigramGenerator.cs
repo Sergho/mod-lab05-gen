@@ -1,8 +1,6 @@
 using System;
 using System.Collections.Generic;
-using System.Dynamic;
 using System.IO;
-using System.Linq;
 
 namespace generator;
 
@@ -45,9 +43,9 @@ public class BigramGenerator : Generator
 		}
 	}
 
-	public override char getNextChar(char? prev)
+	public override string getNextPart(string prev)
 	{
-		if (prev == null)
+		if (prev == "")
 		{
 			int num = random.Next(0, totalSize);
 			int current = 0;
@@ -56,21 +54,21 @@ public class BigramGenerator : Generator
 				foreach (var key in item.Keys)
 				{
 					current += item[key];
-					if (num <= current) return key;
+					if (num <= current) return $"{key}";
 				}
 			}
 		}
 		else
 		{
-			int num = random.Next(0, sizes[(char)prev]);
+			int num = random.Next(0, sizes[(char)prev[0]]);
 			int current = 0;
-			foreach (var key in data[(char)prev].Keys)
+			foreach (var key in data[(char)prev[0]].Keys)
 			{
-				current += data[(char)prev][key];
-				if (num <= current) return key;
+				current += data[(char)prev[0]][key];
+				if (num <= current) return $"{key}";
 			}
 		}
-		return '\0';
+		return "";
 	}
 	public override Example getExample(int length)
 	{
