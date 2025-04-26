@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace generator;
 
-public abstract class CharGenerator
+public abstract class Generator
 {
 	abstract public char getNextChar(char? prev);
 	abstract public Example getExample(int length);

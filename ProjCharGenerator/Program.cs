@@ -6,7 +6,7 @@ namespace generator
     {
         static void Main(string[] args)
         {
-            var generator = new BigramCharGenerator();
+            var generator = new BigramGenerator();
             Example example = generator.getExample(10000);
             Console.WriteLine(example.String);
             foreach (var entry in example.Stats)

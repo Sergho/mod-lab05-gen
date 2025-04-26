@@ -4,13 +4,13 @@ using System.Linq;
 
 namespace generator;
 
-public class SteadyCharGenerator : CharGenerator
+public class SteadyGenerator : Generator
 {
 	private string syms = "абвгдеёжзийклмнопрстуфхцчшщьыъэюя";
 	private char[] data;
 	private int size;
 	private Random random = new Random();
-	public SteadyCharGenerator()
+	public SteadyGenerator()
 	{
 		size = syms.Length;
 		data = syms.ToCharArray();

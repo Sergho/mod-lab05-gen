@@ -6,7 +6,7 @@ using System.Linq;
 
 namespace generator;
 
-public class BigramCharGenerator : CharGenerator
+public class BigramGenerator : Generator
 {
 	private Dictionary<char, Dictionary<char, int>> data = new();
 	private Dictionary<char, int> sizes = new();
@@ -23,7 +23,7 @@ public class BigramCharGenerator : CharGenerator
 		}
 	}
 	private Random random = new Random();
-	public BigramCharGenerator()
+	public BigramGenerator()
 	{
 		var lines = File.ReadAllLines("samples/bigrams.txt");
 		foreach (var line in lines)
