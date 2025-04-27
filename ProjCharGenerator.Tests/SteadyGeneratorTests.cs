@@ -19,6 +19,13 @@ public class SteadyGeneratorTests
     }
 
     [Fact]
+    public void PartLengthTest()
+    {
+        var generator = new SteadyGenerator();
+        Assert.Equal(1, generator.getNextPart("").Length);
+    }
+
+    [Fact]
     public void StringLengthTest()
     {
         var generator = new SteadyGenerator();

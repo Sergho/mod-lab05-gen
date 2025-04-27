@@ -6,14 +6,14 @@ namespace generator;
 
 public class BigramGenerator : Generator
 {
-	private Dictionary<char, Dictionary<char, int>> data = new();
-	private Dictionary<char, int> sizes = new();
-	private int totalSize
+	public Dictionary<char, Dictionary<char, int>> Data { get; private set; } = new();
+	public Dictionary<char, int> Sizes { get; private set; } = new();
+	public int TotalSize
 	{
 		get
 		{
 			int sum = 0;
-			foreach (var size in sizes.Values)
+			foreach (var size in Sizes.Values)
 			{
 				sum += size;
 			}
@@ -30,15 +30,15 @@ public class BigramGenerator : Generator
 			string bigram = args[0];
 			int probability = int.Parse(args[1]);
 
-			if (data.ContainsKey(bigram[0]))
+			if (Data.ContainsKey(bigram[0]))
 			{
-				data[bigram[0]].Add(bigram[1], probability);
-				sizes[bigram[0]] += probability;
+				Data[bigram[0]].Add(bigram[1], probability);
+				Sizes[bigram[0]] += probability;
 			}
 			else
 			{
-				data.Add(bigram[0], new Dictionary<char, int>() { { bigram[1], probability } });
-				sizes.Add(bigram[0], probability);
+				Data.Add(bigram[0], new Dictionary<char, int>() { { bigram[1], probability } });
+				Sizes.Add(bigram[0], probability);
 			}
 		}
 	}
@@ -47,9 +47,9 @@ public class BigramGenerator : Generator
 	{
 		if (prev == "")
 		{
-			int num = random.Next(0, totalSize);
+			int num = random.Next(0, TotalSize);
 			int current = 0;
-			foreach (var item in data.Values)
+			foreach (var item in Data.Values)
 			{
 				foreach (var key in item.Keys)
 				{
@@ -60,11 +60,11 @@ public class BigramGenerator : Generator
 		}
 		else
 		{
-			int num = random.Next(0, sizes[(char)prev[0]]);
+			int num = random.Next(0, Sizes[(char)prev[0]]);
 			int current = 0;
-			foreach (var key in data[(char)prev[0]].Keys)
+			foreach (var key in Data[(char)prev[0]].Keys)
 			{
-				current += data[(char)prev[0]][key];
+				current += Data[(char)prev[0]][key];
 				if (num <= current) return $"{key}";
 			}
 		}
