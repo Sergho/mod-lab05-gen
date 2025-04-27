@@ -6,8 +6,8 @@ namespace generator;
 
 public class WordGenerator : Generator
 {
-	private Dictionary<string, int> data = new();
-	private int size = 0;
+	public Dictionary<string, int> Data { get; private set; } = new();
+	public int Size { get; private set; } = 0;
 	private Random random = new Random();
 	public WordGenerator()
 	{
@@ -18,8 +18,8 @@ public class WordGenerator : Generator
 			string word = args[0];
 			int probability = int.Parse(args[1]);
 
-			data.Add(word, probability);
-			size += probability;
+			Data.Add(word, probability);
+			Size += probability;
 		}
 	}
 
@@ -28,11 +28,11 @@ public class WordGenerator : Generator
 		string prefix = "";
 		if (prev != "") prefix = " ";
 
-		int num = random.Next(0, size);
+		int num = random.Next(0, Size);
 		int current = 0;
-		foreach (var key in data.Keys)
+		foreach (var key in Data.Keys)
 		{
-			current += data[key];
+			current += Data[key];
 			if (num <= current) return $"{prefix}{key}";
 		}
 
@@ -41,7 +41,7 @@ public class WordGenerator : Generator
 	public override Example getExample(int length)
 	{
 		var stats = new SortedDictionary<string, double>();
-		string result = getString(length + 1);
+		string result = getString(length);
 		var words = result.Split(" ");
 		foreach (string word in words)
 		{

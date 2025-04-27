@@ -32,6 +32,21 @@ public class BigramGeneratorTests
 	public void SizesTest()
 	{
 		var generator = new BigramGenerator();
+		foreach (var key in generator.Sizes.Keys)
+		{
+			int sum = 0;
+			foreach (var probability in generator.Data[key].Values)
+			{
+				sum += probability;
+			}
+			Assert.Equal(generator.Sizes[key], sum);
+		}
+	}
+
+	[Fact]
+	public void TotalSizeTest()
+	{
+		var generator = new BigramGenerator();
 		int sum = 0;
 		foreach (var size in generator.Sizes.Values)
 		{
@@ -59,10 +74,10 @@ public class BigramGeneratorTests
 	{
 		var generator = new BigramGenerator();
 		int sum = 0;
-		foreach (int statValue in generator.getExample(1000).Stats.Values)
+		foreach (int statValue in generator.getExample(10).Stats.Values)
 		{
 			sum += statValue;
 		}
-		Assert.Equal(999, sum);
+		Assert.Equal(10, sum);
 	}
 }

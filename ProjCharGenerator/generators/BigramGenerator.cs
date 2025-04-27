@@ -74,7 +74,7 @@ public class BigramGenerator : Generator
 	{
 		var stats = new SortedDictionary<string, double>();
 		string result = getString(length + 1);
-		for (int i = 0; i < length - 1; i++)
+		for (int i = 0; i < length; i++)
 		{
 			string bigram = $"{result[i]}{result[i + 1]}";
 			if (stats.ContainsKey(bigram))
