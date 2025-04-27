@@ -5,19 +5,19 @@ namespace generator;
 
 public class SteadyGenerator : Generator
 {
-	private string syms = "абвгдеёжзийклмнопрстуфхцчшщьыъэюя";
-	private char[] data;
-	private int size;
+	private readonly string syms = "абвгдеёжзийклмнопрстуфхцчшщьыъэюя";
+	public char[] Data { get; private set; }
+	public int Size { get; private set; }
 	private Random random = new Random();
 	public SteadyGenerator()
 	{
-		size = syms.Length;
-		data = syms.ToCharArray();
+		Size = syms.Length;
+		Data = syms.ToCharArray();
 	}
 
 	public override string getNextPart(string prev)
 	{
-		return $"{data[random.Next(0, size)]}";
+		return $"{Data[random.Next(0, Size)]}";
 	}
 	public override Example getExample(int length)
 	{
